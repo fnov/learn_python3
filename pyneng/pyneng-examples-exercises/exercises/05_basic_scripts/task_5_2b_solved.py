@@ -1,20 +1,17 @@
 # -*- coding: utf-8 -*-
 '''
-Задание 5.2
+Задание 5.2b
 
+Переделать скрипт из задания 5.2a таким образом, чтобы, при запросе параметра,
+отображался список возможных параметров.
 
-В задании создан словарь, с информацией и разных устройствах.
+Вывести информацию о соответствующем параметре, указанного устройства.
 
-Вам нужно запросить у пользователя ввод имени устройства (r1, r2 или sw1).
-И вывести информацию о соответствующем устройстве на стандартный поток вывода
-(информация будет в виде словаря).
-
-
-Пример выполнения скрипта (ключи могут быть в другом порядке):
-$ python task_5_2.py
+Пример выполнения скрипта:
+$ python task_5_2b.py
 Enter device name: r1
-{'ios': '15.4', 'model': '4451', 'vendor': 'Cisco',
-'location': '21 New Globe Walk', 'ip': '10.255.0.1'}
+Enter parameter name (ios, model, vendor, location, ip): ip
+10.255.0.1
 
 Ограничение: нельзя изменять словарь london_co.
 
@@ -51,4 +48,6 @@ london_co = {
 ###
 
 device = input('Enter device name: ')
-print(london_co[device])
+param_list = tuple(london_co[device].keys())
+param = input('Enter parameter name {}: '.format(param_list).replace("'", ''))
+print(london_co[device][param])
