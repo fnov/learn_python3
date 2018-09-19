@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 '''
-Задание 4.6
+Задание 7.1
 
-Обработать строку ospf_route и вывести информацию в виде:
+Аналогично заданию 4.6 обработать строки из файла ospf.txt
+и вывести информацию по каждой в таком виде:
 Protocol:              OSPF
 Prefix:                10.0.24.0/24
 AD/Metric:             110/41
@@ -14,15 +15,7 @@ Outbound Interface:    FastEthernet0/0
 
 '''
 
-ospf_route = 'O        10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0'
-
 ###
-
-i = ospf_route.find('via')
-value_list = ospf_route.replace(',', '').split()
-value_list[0] = 'OSPF'
-value_list[2] = value_list[2].strip('[]')
-del value_list[3]
 
 out_info = '''Protocol:              {}
 Prefix:                {}
@@ -30,4 +23,14 @@ AD/Metric:             {}
 Next-Hop:              {}
 Last update:           {}
 Outbound Interface:    {}'''
-print(out_info.format(*value_list))
+
+file = open('ospf.txt')
+for line in file:
+    value_list = line.replace(',', '').split()
+    if value_list[0] == 'O': value_list[0] = 'OSPF' 
+    value_list[2] = value_list[2].strip('[]')
+    del value_list[3]
+    print(out_info.format(*value_list))
+    print()
+
+file.close()
