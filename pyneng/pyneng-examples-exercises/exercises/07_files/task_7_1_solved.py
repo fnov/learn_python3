@@ -24,13 +24,11 @@ Next-Hop:              {}
 Last update:           {}
 Outbound Interface:    {}'''
 
-file = open('ospf.txt')
-for line in file:
-    value_list = line.replace(',', '').split()
-    if value_list[0] == 'O': value_list[0] = 'OSPF' 
-    value_list[2] = value_list[2].strip('[]')
-    del value_list[3]
-    print(out_info.format(*value_list))
-    print()
-
-file.close()
+with open('ospf.txt') as file:
+    for line in file:
+        value_list = line.replace(',', '').split()
+        if value_list[0] == 'O': value_list[0] = 'OSPF' 
+        value_list[2] = value_list[2].strip('[]')
+        del value_list[3]
+        print(out_info.format(*value_list))
+        print()
