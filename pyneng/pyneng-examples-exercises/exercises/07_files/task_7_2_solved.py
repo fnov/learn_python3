@@ -19,6 +19,7 @@
 import sys
 
 config = sys.argv[1]
+#config = 'config_sw1.txt'
 
 with open(config) as file:
     for line in file:
