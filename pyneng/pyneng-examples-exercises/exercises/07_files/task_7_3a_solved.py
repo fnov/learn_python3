@@ -23,5 +23,5 @@ with open(mac_table) as file:
             mac_lines.append(line.split())
 
 mac_lines.sort()
-for line in mac_lines:
-    print('{0:>4} {1:>17}   {3}'.format(*line))
+for vlan, mac, _, intf in mac_lines:
+    print('{:>4} {:>17}   {}'.format(vlan, mac, intf))

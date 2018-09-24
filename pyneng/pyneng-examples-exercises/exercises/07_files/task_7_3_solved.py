@@ -26,5 +26,5 @@ mac_table = 'CAM_table.txt'
 with open(mac_table) as file:
     for line in file:
         if line.count('.') >= 2:
-            line_columns = line.split()
-            print('{0:>4} {1:>17}   {3}'.format(*line_columns))
+            vlan, mac, _, intf = line.split()
+            print('{:>4} {:>17}   {}'.format(vlan, mac, intf))
