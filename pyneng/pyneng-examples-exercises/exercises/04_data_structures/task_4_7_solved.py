@@ -12,5 +12,7 @@ MAC = 'AAAA:BBBB:CCCC'
 
 ###
 
-mac_bin = '{:b}'.format(int(MAC.replace(':', ''), 16))
+int_bin_list = [int(i, 16) for i in MAC.split(':')]
+fmt = '{0:08b}{1:08b}{2:08b}'
+mac_bin = fmt.format(*int_bin_list)
 print(mac_bin)

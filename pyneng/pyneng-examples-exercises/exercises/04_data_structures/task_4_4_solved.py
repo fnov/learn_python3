@@ -18,8 +18,8 @@ command2 = 'switchport trunk allowed vlan 1,3,100,200,300'
 ###
 
 def get_vlans_list(string):
-    i = string.index('1')
-    return [int(j) for j in string[i:].split(',')]
+    vlans = string.split()[-1]
+    return [int(i) for i in vlans.split(',')]
 
 set1 = set(get_vlans_list(command1))
 set2 = set(get_vlans_list(command2))
